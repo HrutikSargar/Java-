@@ -1,0 +1,37 @@
+/*
+  METHOD OVERRIDING==> IF THE CHILD CLASS IMPLEMENTS SAME METHOD AS  
+                       PARENT CLASS IT IS KNOWN AS METHOD OVERRIDING. 
+*/ 
+class a {
+    int a;
+
+    public int meth1() {
+        return 1;
+    }
+
+    public void meth2() {
+        System.out.println("method no 2 of class a");
+    }
+
+}
+
+class b extends a {
+    public void meth3() {
+        System.out.println("method no 3  of class b");
+    }
+
+    @Override
+    public void meth2() { // METHOD OVERRIDING
+        System.out.println("method no 2 of class b");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        a aa = new a();
+        aa.meth2();
+
+        b bb = new B();
+        bb.meth2();
+    }
+}
