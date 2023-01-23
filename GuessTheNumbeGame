@@ -1,0 +1,61 @@
+/*
+     Create a class Game, which allows a user to play "Guess the Number" game once. Game should have the following methods:
+            1. Constructor to generate the random number
+            2. takeUserInput() to take a user input of number
+            3. isCorrectNumber() to detect whether the number entered by the user is true
+            4. getter and setter for noOfGuesses
+            Use properties such as noOfGuesses(int), etc to get this task done!
+         */
+
+
+import java.util.*;
+class Game {
+    public int number;
+    public int inputNumber;
+    public int noOfGeusses=0;
+
+    public int getNoOfGeusses() {
+        return noOfGeusses;
+    }
+
+    public void getNoOfGeusses(int noOfGeusses) {
+        this.noOfGeusses = noOfGeusses;
+    }
+
+    Game() {//CONSTRUCTOR CREATED 
+        Random rand =new Random();//TAKING RANDOM NO FOR GEUSSING  
+        this.number =rand.nextInt(100);
+
+    }
+
+    void takeUserInput() {// method created user  input  ghenyasaathi
+       System.out.println("Guess the Number");
+        Scanner sc =new Scanner(System.in); //scanner  class ghetla inout ghenya sathi
+        inputNumber=sc.nextInt();//input ghetla 
+    }
+
+    boolean isCorrectNumber() {
+        noOfGeusses++;
+            if(inputNumber==number){
+                System.out.format("Yes you guessed it right,it was %d\nYot geussed it in %d attempts",number , noOfGeusses);
+                return true;
+            }else if(inputNumber<number){
+                System.out.println("Too low...");
+            }else if(inputNumber>number){
+                System.out.println("Too High...");
+            }
+            return false;
+    }
+}
+
+public class GuessTheNumber {
+    public static void main(String[] Args) {
+        Game g =new Game();
+        boolean b=false;
+        while(!b){
+            g.takeUserInput();
+            b=g.isCorrectNumber();
+        }
+
+    }
+}
