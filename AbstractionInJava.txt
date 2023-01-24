@@ -1,0 +1,106 @@
+/*
+A class which is declared with the abstract keyword is known as an abstract class in Java. 
+It can have abstract and non-abstract methods (method with the body).
+
+Abstraction is a process of hiding the implementation details and showing only functionality to the user.
+Abstraction lets you focus on what the object does instead of how it does it.
+
+Another way, it shows only essential things to the user and hides the internal details,
+ for example, sending SMS where you type the text and send the message. 
+ You don't know the internal processing about the message delivery.
+
+Defination Abstract ==> (KHAYALI PULAV MAHNAJE ABSTRACT)A Class or Method without Concrete immplemantation.
+
+ * 1.YOU CANT CREATE OBJECT OF BASE CLASS WHEN IT IS ABSTRACTED.\
+ * 2.ABSTRACT CLASS IS A STANDARD FOR DERIVED CLASSES TO USE THE ABSTRACT METHODS 
+ *   WHICH IS STATED IN THE ABSTRACT CLASS.
+ * 3.BY USING THE ABSTRACT METHODS DERIVED CLASSES , THE DERIVED CLASSES CAN BUILD THE CONCREATE METHODS.
+ * 
+ * ===>EXAMPLE OF BANK ON ABSTRACTION<===
+ * abstract class Bank{    
+abstract int getRateOfInterest();    
+}    
+class SBI extends Bank{    
+int getRateOfInterest(){return 7;}    
+}    
+class PNB extends Bank{    
+int getRateOfInterest(){return 8;}    
+}    
+    
+class TestBank{    
+public static void main(String args[]){    
+Bank b;  
+b=new SBI();  
+System.out.println("Rate of Interest is: "+b.getRateOfInterest()+" %");    
+b=new PNB();  
+System.out.println("Rate of Interest is: "+b.getRateOfInterest()+" %");    
+}}   
+ */
+
+abstract class base{
+    public base(){
+        System.out.println("I am constructor of parent class");
+    }
+      void hello1(){
+        System.out.println("HELLO");
+    }
+    abstract public void greet();  //ABSTRACT METHOD 
+    abstract public void greet2();  //ABSTRACT METHOD 
+
+}
+
+class derived extends base{
+    /*derived(){
+        System.out.println("hrutik sargar");
+    }*/
+    @Override
+    public void greet(){//ABSTRACT METHOD IMPLEMENTED EXTENDED CLASS 
+        System.out.println("Good Morning");
+    }
+    @Override
+    public void greet2(){//ABSTRACT METHOD IMPLEMENTED EXTENDED CLASS 
+        System.out.println("Good Morning");
+    }
+   
+
+} 
+//SEPARATE NEW ABSTRACT CLASS ==> BIKE .
+
+abstract class bike{
+   bike(){
+    System.out.println("bike");
+   } 
+   void meth(){//method with no abstraction
+    System.out.println("method");
+   }
+   abstract void speed();//METHOD ABSTRACTION 
+}
+
+class honda extends bike{
+    void speed(){//ABSTRACTED METHOD USED IN DERIVED CLASS
+        System.out.println("bike has speed");
+    }
+}
+class suzuki extends bike{
+    void speed(){//ABSTRACTED METHOD USE DIN DERIVED CLASS
+        System.out.println("Suzuki also has speed");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+      //  base b = new base(); error dakhavel. object create karu shakat nahi abastract class cha.
+     // base Obj = new derived();
+       //Obj.hello1();
+       //Obj.greet();
+      
+    bike Obj1 = new honda();
+        Obj1.speed();
+        Obj1.meth();
+
+    bike Obj2 = new suzuki();
+        Obj2.speed();
+        Obj2.meth();
+
+    }
+}
