@@ -1,0 +1,62 @@
+class Library{
+    String []books=new String[100];//books navacha array banavla. book store karnyasathi.
+    int no_of_books;//book la no denyasathi.
+   Library(){
+    this.books=new String[100];//array la size allot keli aahe 100.
+    this.no_of_books=0;//no of books initialize kel.
+   }
+    void addBook(String book){ // navin book add karyasathin method tayaar keli aahe.
+        this.books[no_of_books]= book;
+        no_of_books++;
+        System.out.println(no_of_books +" "+book+" <=== Book has been added to array(Library).");
+
+    }
+    void issuebook(String book){//star 
+        for (int i=0;i<this.books.length;i++){
+            if (this.books[i].equals(book)){
+                System.out.println("The book has been issued!");
+                this.books[i] = null;
+                return;
+            }
+        }
+        System.out.println("This book does not exist");
+
+
+    }
+    void showAvailableBook(){//Availalbe books show karanyasathi method
+            System.out.println("Available Books Are :");
+            for(int no_of_books=0;no_of_books<books.length;no_of_books++){//for loop lavun array show kela 
+                
+                if(books[no_of_books]==null){//array madhe position null asel tr break karanyasathi if statement lavle aahe 
+                    continue;
+                }
+               
+                System.out.println("* "+books[no_of_books]);//sout available book show karte 
+            }
+    }
+    void returnBook(String book){//return keleli book  array madhe add karanyasathi method.
+        this.books[no_of_books]=book;
+        System.out.println("The Book * "+book+" * Has Been Returned.");
+
+    }
+}
+public class video51_OnlineLibrary {
+    public static void main(String[] Args) {
+        
+        Library centralLibrary = new Library();
+        centralLibrary.addBook("Rich Dad Poor Dad");
+        centralLibrary.addBook("Angaar");
+        centralLibrary.addBook("Think and Grow Rich");
+        System.out.println("\n");
+        centralLibrary.showAvailableBook();
+        System.out.println("\n");
+        centralLibrary.issuebook("Angaar");
+        System.out.println("\n");
+        centralLibrary.showAvailableBook();
+        System.out.println("\n");
+        centralLibrary.returnBook("Angaar");
+        System.out.println("\n");
+        centralLibrary.showAvailableBook();
+
+    }
+}
